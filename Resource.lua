@@ -8,7 +8,7 @@ local _M = {}
 local __Version = '1.0.4'
 
 local __ProjectName = 'Resource模块'
-local __SourcecodeUrl = 'http://94.74.98.169/index/api/manualdata?manual_id=4102'
+local __SourcecodeUrl = 'https://github.com/Nnuo0/Nnuo0/blob/main/Resource.lua'
 local __OntologyAddress = debug.getinfo(1).short_src
 
 local __LuaDir = activity.LuaDir
