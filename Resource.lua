@@ -18,7 +18,7 @@ for name in resource(true) do
 end
 1.0.4 2024-06-13 20:30
 新增功能:添加新类型处理
-resource:__add(type,method)
+resource:__add(string type,function method)
 1.0.0 2024 正式发布
 ]]
 
