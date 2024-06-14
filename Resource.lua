@@ -1,15 +1,26 @@
 -----------------------------------------------------------------------------
--- Resource (C) 2024 (Nuo/诺~),All rights reserved。
+-- Resource (C) 2024-06-14 (Nuo/诺~),All rights reserved。
 -- Email：QQ197973274@163.com
--- Version 1.0.4
+-- Version 1.0.5
 -----------------------------------------------------------------------------
 local _M = {}
 
-local __Version = '1.0.4'
+local __Version = '1.0.5'
 
 local __ProjectName = 'Resource模块'
 local __SourcecodeUrl = 'https://github.com/Nnuo0/Nnuo0/blob/main/Resource.lua'
 local __OntologyAddress = debug.getinfo(1).short_src
+local __UpdateContent = [[
+1.0.5 2024-06-14 11:55
+新增功能:获取路径内的文件
+for name in resource(true) do
+  --文件名name
+end
+1.0.4 2024-06-13 20:30
+新增功能:添加新类型处理
+resource:__add(type,method)
+1.0.0 2024 正式发布
+]]
 
 local __LuaDir = activity.LuaDir
 
@@ -113,8 +124,15 @@ _M.__index = function(self, key)
 end
 
 _M.__call = function(self, Path)
-  if Path == nil then
+  if type(Path) == 'string' then
     Path = utf8.match(__Info.source,'@(.*)/')
+   elseif Path == true then
+    local __files = io.ls(self.__ROOT__)
+    local __key = 2
+    return function()
+      __key = __key + 1
+      return __files[__key]
+    end
   end
   self.__ROOT__=(type(Path)=='string'&&__Exists(Path))&&Path||self.__ROOT__
   return self
